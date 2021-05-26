@@ -26,7 +26,7 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
  * @author Gopal G
  *
  */
-          public class EmployeeServlet extends HttpServlet {
+    public class EmployeeServlet extends HttpServlet {
     	EmployeeService employeeService = new EmployeeServiceImpl();
 
                 /**
