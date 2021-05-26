@@ -26,321 +26,322 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
  * @author Gopal G
  *
  */
-    public class EmployeeServlet extends HttpServlet {
-    	EmployeeService employeeService = new EmployeeServiceImpl();
+ public class EmployeeServlet extends HttpServlet {
+     EmployeeService employeeService = new EmployeeServiceImpl();
 
-       /**
-    	* Fetches details of all employees from service layer for display purposes
-    	*
-   	* @param request Instance of HttpServletRequest which has necessary parameters and
-    	*                attributes required for delivering a web service.
-    	* @param response Instance of HttpServletResponse which has the necessary response 
-    	*                that is to be delivered to the web client.
-    	*                
-    	*/
-    	public void fetchAllEmployees(HttpServletRequest request, HttpServletResponse response) {
-       	 	List<List<String[]>> allEmployees = employeeService.fetchAllEmployees();
-       		request.setAttribute("allEmployeesList", allEmployees);
-        		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Employee.jsp");
-        		try {
-            			requestDispatcher.forward(request,  response);
-        		} catch (ServletException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		} catch (IOException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
-     	}
+    /**
+     * Fetches details of all employees from service layer for display purposes
+     *
+     * @param request Instance of HttpServletRequest which has necessary parameters and
+     *                attributes required for delivering a web service.
+     * @param response Instance of HttpServletResponse which has the necessary response 
+     *                that is to be delivered to the web client.
+     *                
+     */
+     public void fetchAllEmployees(HttpServletRequest request, HttpServletResponse response) {
+         List<List<String[]>> allEmployees = employeeService.fetchAllEmployees();
+       	 request.setAttribute("allEmployeesList", allEmployees);
+         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Employee.jsp");
+         try {
+             requestDispatcher.forward(request,  response);
+         } catch (ServletException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+         } catch (IOException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+         }
+     }
 	
-        /**
-         * Fetches details of a particular employee for update
-	 *
-	 * @param request Instance of HttpServletRequest which has necessary parameters and
-	 *                attributes required for delivering a web service.
-	 * @param response Instance of HttpServletResponse which has the necessary response 
-	 *                that is to be delivered to the web client.
-	 *                
-	 */
-	public void getEmployeeForEdit(HttpServletRequest request, HttpServletResponse response) {
-		String action = (String) request.getParameter("action");
-		String employeeID = (String) request.getParameter("emp_id");
-		List<String[]> employeeDetails = employeeService.searchIndividualEmployee(employeeID);
-		request.setAttribute("employeeDetails", employeeDetails);
-		if ("editDetails".equals(action)) {
-                                      request.setAttribute("updateAction", "basicDetails");
-                                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
-		} else if ("editAddress".equals(action)) {
-			request.setAttribute("updateAction", "address");
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
-		} else if("addNewAddress".equals(action)) {
-			request.setAttribute("updateAction", "addNewAddress");
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
-		}
-		try {
-                        requestDispatcher.forward(request, response);
-                } catch (ServletException e) {
-            		// TODO Auto-generated catch block
-            		e.printStackTrace();
-        	} catch (IOException e) {
-            		// TODO Auto-generated catch block
-            		e.printStackTrace();
-        	}
-    	}
+    /**
+     * Fetches details of a particular employee for update
+     *
+     * @param request Instance of HttpServletRequest which has necessary parameters and
+     *                attributes required for delivering a web service.
+     * @param response Instance of HttpServletResponse which has the necessary response 
+     *                that is to be delivered to the web client.
+     *                
+     */
+     public void getEmployeeForEdit(HttpServletRequest request, HttpServletResponse response) {
+         String action = (String) request.getParameter("action");
+         String employeeID = (String) request.getParameter("emp_id");
+         List<String[]> employeeDetails = employeeService.searchIndividualEmployee(employeeID);
+         request.setAttribute("employeeDetails", employeeDetails);
+         if ("editDetails".equals(action)) {
+             request.setAttribute("updateAction", "basicDetails");
+             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
+         } else if ("editAddress".equals(action)) {
+             request.setAttribute("updateAction", "address");
+             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
+         } else if("addNewAddress".equals(action)) {
+             request.setAttribute("updateAction", "addNewAddress");
+             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
+         }
+         try {
+             requestDispatcher.forward(request, response);
+         } catch (ServletException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+         } catch (IOException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+         }
+     }
 	
-	/**
-	 * Initiates input entry for new employee addition request
-	 *
-	 * @param request Instance of HttpServletRequest which has necessary parameters and
-	 *                attributes required for delivering a web service.
-	 * @param response Instance of HttpServletResponse which has the necessary response 
-	 *                that is to be delivered to the web client.
-	 *                
-	 */
-	public void createNewEmployee(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("operation", "createEmployee");
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
-		try {
-			requestDispatcher.forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    /**
+     * Initiates input entry for new employee addition request
+     *
+     * @param request Instance of HttpServletRequest which has necessary parameters and
+     *                attributes required for delivering a web service.
+     * @param response Instance of HttpServletResponse which has the necessary response 
+     *                that is to be delivered to the web client.
+     *                
+     */
+     public void createNewEmployee(HttpServletRequest request, HttpServletResponse response) {
+         request.setAttribute("operation", "createEmployee");
+         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
+         try {
+             requestDispatcher.forward(request, response);
+         } catch (ServletException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+         } catch (IOException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+         }
+      }
 	
-	/**
-	 * Processes received input data, performs validation and passes the clean data on to service layer
-	 * for new employee addition.
-	 *
-	 * @param request Instance of HttpServletRequest which has necessary parameters and
-	 *                attributes required for delivering a web service.
-	 * @param response Instance of HttpServletResponse which has the necessary response 
-	 *                that is to be delivered to the web client.
-	 *                
-	 */
-	public void addNewEmployee(HttpServletRequest request, HttpServletResponse response) {
-		String name = (String)request.getParameter("name");
-		String employeeID = (String)request.getParameter("employeeId");
-		String dob = (String)request.getParameter("dateOfBirth");
-		String email = (String)request.getParameter("email");
-		Double salary = Double.parseDouble((String)request.getParameter("salary"));
-		String perm = (String)request.getParameter("isPermanent");
-		boolean isPermanent = ("true".equals(perm) ? true : false);
-		String doorNo = (String)request.getParameter("doorNo");
-		String street = (String)request.getParameter("street");
-		String locality = (String)request.getParameter("locality");
-		String pincode = (String)request.getParameter("pincode");
-		String district = (String)request.getParameter("district");
-		String state = (String)request.getParameter("state");
-		String message = "";Date dateOfBirth = null;
-		String address[] = new String[8];
-		List<String[]> addresses = new LinkedList<String[]>();
-		boolean success = false;
-		if (!(employeeService.checkIfIdExists(employeeID))) {
-			dateOfBirth = employeeService.getBirthDate(dob);
-			if(null != dateOfBirth) {
-				address[0] = perm;
-				address[1] = doorNo;
-				address[2] = street;
-				address[3] = locality; 
-				address[4] = pincode;
-				address[5] = district;
-				address[6] = state;
-				address[7] = employeeID;
-				addresses.add(address);
-				success = employeeService.addEmployee(name, employeeID, salary, dateOfBirth, email, addresses);
-				if (!success) {
-					message += "Error in adding employee to the roster.";
-				} else {
-					message += "New employee added successfully";
-				}
-			} else {
-				message += "Invalid date of birth. ";
-			}
-		} else {
-			message += "Invalid employeeID as it exists already.";
-		}
-		if (!success) {
-			request.setAttribute("errorMessage", message);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ErrorDisplay.jsp");
-		} else {
-			request.setAttribute("successMessage", message);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
-		}
-		try {
-			requestDispatcher.forward(request, response);
-	    	} catch (ServletException | IOException e) {
-            			// TODO Auto-generated catch block
-	        		e.printStackTrace();
-	    	}
-    	}
+     /**
+      * Processes received input data, performs validation and passes the clean data on to service layer
+      * for new employee addition.
+      *
+      * @param request Instance of HttpServletRequest which has necessary parameters and
+      *                attributes required for delivering a web service.
+      * @param response Instance of HttpServletResponse which has the necessary response 
+      *                that is to be delivered to the web client.
+      *                
+      */
+      public void addNewEmployee(HttpServletRequest request, HttpServletResponse response) {
+          String name = (String)request.getParameter("name");
+          String employeeID = (String)request.getParameter("employeeId");
+          String dob = (String)request.getParameter("dateOfBirth");
+          String email = (String)request.getParameter("email");
+          Double salary = Double.parseDouble((String)request.getParameter("salary"));
+          String perm = (String)request.getParameter("isPermanent");
+          boolean isPermanent = ("true".equals(perm) ? true : false);
+          String doorNo = (String)request.getParameter("doorNo");
+          String street = (String)request.getParameter("street");
+          String locality = (String)request.getParameter("locality");
+          String pincode = (String)request.getParameter("pincode");
+          String district = (String)request.getParameter("district");
+          String state = (String)request.getParameter("state");
+          String message = "";
+          Date dateOfBirth = null;
+          String address[] = new String[8];
+          List<String[]> addresses = new LinkedList<String[]>();
+          boolean success = false;
+          if (!(employeeService.checkIfIdExists(employeeID))) {
+              dateOfBirth = employeeService.getBirthDate(dob);
+              if(null != dateOfBirth) {
+                  address[0] = perm;
+                  address[1] = doorNo;
+                  address[2] = street;
+                  address[3] = locality; 
+                  address[4] = pincode;
+                  address[5] = district;
+                  address[6] = state;
+                  address[7] = employeeID;
+                  addresses.add(address);
+                  success = employeeService.addEmployee(name, employeeID, salary, dateOfBirth, email, addresses);
+                  if (!success) {
+                      message += "Error in adding employee to the roster.";
+                  } else {
+                      message += "New employee added successfully";
+                  }
+              } else {
+                   message += "Invalid date of birth. ";
+              }
+          } else {
+              message += "Invalid employeeID as it exists already.";
+          }
+          if (!success) {
+              request.setAttribute("errorMessage", message);
+              RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ErrorDisplay.jsp");
+           } else {
+              request.setAttribute("successMessage", message);
+              RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
+           }
+           try {
+               requestDispatcher.forward(request, response);
+           } catch (ServletException | IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+           }
+      }
 	
-	/**
-	 * Processes the to-be-updated employee data, performs validation and passes on the data
-	 * to service layer for update.
-	 *
-	 * @param request Instance of HttpServletRequest which has necessary parameters and
-	 *                attributes required for delivering a web service.
-	 * @param response Instance of HttpServletResponse which has the necessary response 
-	 *                that is to be delivered to the web client.
-	 *                
-	 */
-	public void updateEmployeeDetails(HttpServletRequest request, HttpServletResponse response) {
-		String name = (String)request.getParameter("name");
-		String employeeID = (String)request.getParameter("employeeId");
-		String dob = (String)request.getParameter("dateOfBirth");
-		String email = (String)request.getParameter("email");
-		Double salary = Double.parseDouble((String)request.getParameter("salary"));
-		Date dateOfBirth = null;
-		boolean success = false;
-		String message = "";
-	    	dateOfBirth = employeeService.getBirthDate(dob);
-	    	if(null != dateOfBirth) {
-	       		success = employeeService.updateEmployeeDetails(employeeID, name, dateOfBirth, salary, email);
-			if (!success) {
-				message += "Error in updating employee details";
-			} else {
-		        		message += "Employee details updated successfully";
-			}
-	    	} else {
-			message += "Invalid date of birth. ";
-	    	}
-		if (!success) {
-			request.setAttribute("errorMessage", message);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ErrorDisplay.jsp");
-		} else {
-			request.setAttribute("successMessage", message);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
-		}
-		try {
-           		requestDispatcher.forward(request, response);
-        	} catch (ServletException | IOException e) {
-            		// TODO Auto-generated catch block
-            		e.printStackTrace();
-        	}
-	}
+     /**
+      * Processes the to-be-updated employee data, performs validation and passes on the data
+      * to service layer for update.
+      *
+      * @param request Instance of HttpServletRequest which has necessary parameters and
+      *                attributes required for delivering a web service.
+      * @param response Instance of HttpServletResponse which has the necessary response 
+      *                that is to be delivered to the web client.
+      *                
+      */
+      public void updateEmployeeDetails(HttpServletRequest request, HttpServletResponse response) {
+          String name = (String)request.getParameter("name");
+          String employeeID = (String)request.getParameter("employeeId");
+          String dob = (String)request.getParameter("dateOfBirth");
+          String email = (String)request.getParameter("email");
+          Double salary = Double.parseDouble((String)request.getParameter("salary"));
+          Date dateOfBirth = null;
+          boolean success = false;
+          String message = "";
+          dateOfBirth = employeeService.getBirthDate(dob);
+	  if(null != dateOfBirth) {
+              success = employeeService.updateEmployeeDetails(employeeID, name, dateOfBirth, salary, email);
+              if (!success) {
+                  message += "Error in updating employee details";
+              } else {
+                  message += "Employee details updated successfully";
+              }
+           } else {
+                  message += "Invalid date of birth. ";
+           }
+           if (!success) {
+               request.setAttribute("errorMessage", message);
+               RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ErrorDisplay.jsp");
+           } else {
+               request.setAttribute("successMessage", message);
+               RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
+           }
+           try {
+               requestDispatcher.forward(request, response);
+           } catch (ServletException | IOException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+           }
+       }
 	
-	/**
-	 * Processes the to-be-updated address information, performs validation and passes on the data
-	 * to service layer for update.
-	 *
-	 * @param request Instance of HttpServletRequest which has necessary parameters and
-	 *                attributes required for delivering a web service.
-	 * @param response Instance of HttpServletResponse which has the necessary response 
-	 *                that is to be delivered to the web client.
-	 *                
-	 */
-	public void updateEmployeeAddress(HttpServletRequest request, HttpServletResponse response) {
-		String employeeID = (String)request.getParameter("employeeId");
-		String doorNo = (String)request.getParameter("doorNo");
-		int addressID = Integer.parseInt((String)request.getParameter("addressId"));
-		String street = (String)request.getParameter("street");
-		String locality = (String)request.getParameter("locality");
-		String pincode = (String)request.getParameter("pincode");
-		String district = (String)request.getParameter("district");
-		String state = (String)request.getParameter("state");
-		boolean success = employeeService.updateExistingAddress(addressID, doorNo, street, locality, pincode, 
-                                                                district, state, employeeID);
-		String message = "";
-		if (!success) {
-			message += "Address update unsuccessful.";
-			request.setAttribute("errorMessage", message);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ErrorDisplay.jsp");
-		} else {
-			message += "Address update successful.";
-			request.setAttribute("successMessage", message);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
-		}
-        	try {
-            		requestDispatcher.forward(request, response);
-        	} catch (ServletException | IOException e) {
-            		// TODO Auto-generated catch block
-            		e.printStackTrace();
-        	}
-	}
+      /**
+       * Processes the to-be-updated address information, performs validation and passes on the data
+       * to service layer for update.
+       *
+       * @param request Instance of HttpServletRequest which has necessary parameters and
+       *                attributes required for delivering a web service.
+       * @param response Instance of HttpServletResponse which has the necessary response 
+       *                that is to be delivered to the web client.
+       *                
+       */
+       public void updateEmployeeAddress(HttpServletRequest request, HttpServletResponse response) {
+           String employeeID = (String)request.getParameter("employeeId");
+           String doorNo = (String)request.getParameter("doorNo");
+           int addressID = Integer.parseInt((String)request.getParameter("addressId"));
+           String street = (String)request.getParameter("street");
+           String locality = (String)request.getParameter("locality");
+           String pincode = (String)request.getParameter("pincode");
+           String district = (String)request.getParameter("district");
+           String state = (String)request.getParameter("state");
+           boolean success = employeeService.updateExistingAddress(addressID, doorNo, street, locality, pincode, 
+                                                                   district, state, employeeID);
+           String message = "";
+           if (!success) {
+               message += "Address update unsuccessful.";
+               request.setAttribute("errorMessage", message);
+               RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ErrorDisplay.jsp");
+           } else {
+               message += "Address update successful.";
+               request.setAttribute("successMessage", message);
+               RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
+           }
+           try {
+               requestDispatcher.forward(request, response);
+           } catch (ServletException | IOException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+           }
+       }
+         
+      /**
+       * Processes the delete employee request by forwarding it to the service layer
+       *
+       * @param request Instance of HttpServletRequest which has necessary parameters and
+       *                attributes required for delivering a web service.
+       * @param response Instance of HttpServletResponse which has the necessary response 
+       *                that is to be delivered to the web client.
+       *                
+       */
+       public void deleteEmployee(HttpServletRequest request, HttpServletResponse response) {
+           String employeeID = (String)request.getParameter("emp_id");
+           boolean success = employeeService.deleteEmployee(employeeID);
+           String message = "";
+           if (!success) {
+               message += "Employee deletion unsuccessful.";
+               request.setAttribute("errorMessage", message);
+               RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ErrorDisplay.jsp");
+           } else {
+                message += "Employee deletion successful.";
+                request.setAttribute("successMessage", message);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
+           }
+           try {
+                requestDispatcher.forward(request, response);
+           } catch (ServletException | IOException e) {
+	        // TODO Auto-generated catch block
+                e.printStackTrace();
+           }
+       }
 	
-	/**
-	 * Processes the delete employee request by forwarding it to the service layer
-	 *
-	 * @param request Instance of HttpServletRequest which has necessary parameters and
-	 *                attributes required for delivering a web service.
-	 * @param response Instance of HttpServletResponse which has the necessary response 
-	 *                that is to be delivered to the web client.
-	 *                
-	 */
-	public void deleteEmployee(HttpServletRequest request, HttpServletResponse response) {
-		String employeeID = (String)request.getParameter("emp_id");
-		boolean success = employeeService.deleteEmployee(employeeID);
-		String message = "";
-		if (!success) {
-			message += "Employee deletion unsuccessful.";
-			request.setAttribute("errorMessage", message);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ErrorDisplay.jsp");
-		} else {
-			message += "Employee deletion successful.";
-			request.setAttribute("successMessage", message);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
-		}
-        	try {
-			requestDispatcher.forward(request, response);
-	    	} catch (ServletException | IOException e) {
-	        	// TODO Auto-generated catch block
-            		e.printStackTrace();
-        	}
-	}
+      /**
+       * Fetches the details of all deleted employees for restore user interaction module
+       *
+       * @param request Instance of HttpServletRequest which has necessary parameters and
+       *                attributes required for delivering a web service.
+       * @param response Instance of HttpServletResponse which has the necessary response 
+       *                that is to be delivered to the web client.
+       *                
+       */
+       public void getDeletedEmployees(HttpServletRequest request, HttpServletResponse response) {
+           List<List<String[]>> deletedEmployees = employeeService.getDeletedEmployees();
+           request.setAttribute("deletedEmployees", deletedEmployees);
+           RequestDispatcher requestDispatcher = request.getRequestDispatcher("/DeletedEmployees.jsp");
+           try {
+               requestDispatcher.forward(request, response);
+           } catch (ServletException | IOException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+           }
+       }
 	
-	/**
-	 * Fetches the details of all deleted employees for restore user interaction module
-	 *
-	 * @param request Instance of HttpServletRequest which has necessary parameters and
-	 *                attributes required for delivering a web service.
-	 * @param response Instance of HttpServletResponse which has the necessary response 
-	 *                that is to be delivered to the web client.
-	 *                
-	 */
-	public void getDeletedEmployees(HttpServletRequest request, HttpServletResponse response) {
-		List<List<String[]>> deletedEmployees = employeeService.getDeletedEmployees();
-		request.setAttribute("deletedEmployees", deletedEmployees);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/DeletedEmployees.jsp");
-		try {
-			requestDispatcher.forward(request, response);
-		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Processes restore employee request by issuing restore call to service layer
-	 *
-	 * @param request Instance of HttpServletRequest which has necessary parameters and
-	 *                attributes required for delivering a web service.
-	 * @param response Instance of HttpServletResponse which has the necessary response 
-	 *                that is to be delivered to the web client.
-	 *                
-	 */
-	public void restoreEmployee(HttpServletRequest request, HttpServletResponse response) {
-		String employeeID = (String)request.getParameter("emp_id");
-		boolean success = employeeService.restoreEmployee(employeeID);
-		String message = "";
-		if (!success) {
-			message += "Employee restoration unsuccessful.";
-			request.setAttribute("errorMessage", message);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ErrorDisplay.jsp");
-		} else {
-			message += "Employee restoration successful.";
-			request.setAttribute("successMessage", message);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
-		}
-        	try {
-            		requestDispatcher.forward(request, response);
-        	} catch (ServletException | IOException e) {
-            		// TODO Auto-generated catch block
-            		e.printStackTrace();
-        	}
+      /**
+       * Processes restore employee request by issuing restore call to service layer
+       *
+       * @param request Instance of HttpServletRequest which has necessary parameters and
+       *                attributes required for delivering a web service.
+       * @param response Instance of HttpServletResponse which has the necessary response 
+       *                that is to be delivered to the web client.
+       *                
+       */
+       public void restoreEmployee(HttpServletRequest request, HttpServletResponse response) {
+           String employeeID = (String)request.getParameter("emp_id");
+           boolean success = employeeService.restoreEmployee(employeeID);
+           String message = "";
+           if (!success) {
+               message += "Employee restoration unsuccessful.";
+               request.setAttribute("errorMessage", message);
+               RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ErrorDisplay.jsp");
+            } else {
+               message += "Employee restoration successful.";
+               request.setAttribute("successMessage", message);
+               RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
+            }
+            try {
+                requestDispatcher.forward(request, response);
+            } catch (ServletException | IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 	}
 	
 	/**
