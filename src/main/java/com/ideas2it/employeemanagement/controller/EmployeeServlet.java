@@ -29,7 +29,7 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
     public class EmployeeServlet extends HttpServlet {
     	EmployeeService employeeService = new EmployeeServiceImpl();
 
-                /**
+       /**
     	* Fetches details of all employees from service layer for display purposes
     	*
    	* @param request Instance of HttpServletRequest which has necessary parameters and
@@ -78,14 +78,14 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
 		}
 		try {
-                                   	requestDispatcher.forward(request, response);
-                                 	} catch (ServletException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		} catch (IOException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
+                        requestDispatcher.forward(request, response);
+                } catch (ServletException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	} catch (IOException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	}
     	}
 	
 	/**
@@ -216,11 +216,11 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
 		}
 		try {
-           			requestDispatcher.forward(request, response);
-        		} catch (ServletException | IOException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
+           		requestDispatcher.forward(request, response);
+        	} catch (ServletException | IOException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	}
 	}
 	
 	/**
@@ -254,12 +254,12 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 			request.setAttribute("successMessage", message);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
 		}
-        		try {
-            			requestDispatcher.forward(request, response);
-        		} catch (ServletException | IOException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
+        	try {
+            		requestDispatcher.forward(request, response);
+        	} catch (ServletException | IOException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	}
 	}
 	
 	/**
@@ -284,12 +284,12 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 			request.setAttribute("successMessage", message);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
 		}
-        		try {
+        	try {
 			requestDispatcher.forward(request, response);
 	    	} catch (ServletException | IOException e) {
-	        		// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
+	        	// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	}
 	}
 	
 	/**
@@ -335,12 +335,12 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 			request.setAttribute("successMessage", message);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
 		}
-        		try {
-            			requestDispatcher.forward(request, response);
-        		} catch (ServletException | IOException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
+        	try {
+            		requestDispatcher.forward(request, response);
+        	} catch (ServletException | IOException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	}
 	}
 	
 	/**
@@ -375,11 +375,11 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
 		}
 		try {
-            			requestDispatcher.forward(request, response);
-        		} catch (ServletException | IOException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
+            		requestDispatcher.forward(request, response);
+        	} catch (ServletException | IOException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	}
 	}
 	
 	/**
@@ -406,11 +406,11 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
 		}
 		try {
-            			requestDispatcher.forward(request, response);
-        		} catch (ServletException | IOException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
+            		requestDispatcher.forward(request, response);
+        	} catch (ServletException | IOException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	}
 	}
 	
 	/**
@@ -437,12 +437,12 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 			request.setAttribute("successMessage", message);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
 		}
-        		try {
-            			requestDispatcher.forward(request, response);
-        		} catch (ServletException | IOException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
+        	try {
+            		requestDispatcher.forward(request, response);
+        	} catch (ServletException | IOException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	}
 	}
 	
 	/**
@@ -468,12 +468,12 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 			request.setAttribute("successMessage", message);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SuccessDisplay.jsp");
 		}
-        		try {
-            			requestDispatcher.forward(request, response);
-        		} catch (ServletException | IOException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
+        	try {
+            		requestDispatcher.forward(request, response);
+        	} catch (ServletException | IOException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	}
 	}
 	
 	/**
@@ -557,14 +557,14 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SingleEmployee.jsp"); 
 		}
        		try {
-            			requestDispatcher.forward(request, response);
-        		} catch (ServletException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		} catch (IOException e) {
-            			// TODO Auto-generated catch block
-            			e.printStackTrace();
-        		}
+            		requestDispatcher.forward(request, response);
+        	} catch (ServletException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	} catch (IOException e) {
+            		// TODO Auto-generated catch block
+            		e.printStackTrace();
+        	}
 	}
 	
 	/**
@@ -596,8 +596,8 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
 		} else {
 		    switch(action) {
 		        case "displayAll" :
-		            fetchAllEmployees(request, response);
-		            break;
+		                fetchAllEmployees(request, response);
+		                break;
 		        case "createEmployee":
 		        	createNewEmployee(request, response);
 		        	break;
