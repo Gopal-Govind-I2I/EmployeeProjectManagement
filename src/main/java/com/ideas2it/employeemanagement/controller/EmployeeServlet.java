@@ -53,8 +53,8 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
         		}
      	}
 	
-                /**
-                  * Fetches details of a particular employee for update
+        /**
+         * Fetches details of a particular employee for update
 	 *
 	 * @param request Instance of HttpServletRequest which has necessary parameters and
 	 *                attributes required for delivering a web service.
