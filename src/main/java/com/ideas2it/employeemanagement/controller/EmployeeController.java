@@ -74,7 +74,7 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
          } else if("addNewAddress".equals(action)) {
              request.setAttribute("updateAction", "addNewAddress");
          }
-		 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
+         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/FormFill.jsp");
          try {
              requestDispatcher.forward(request, response);
          } catch (ServletException e) {
@@ -108,7 +108,15 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
              e.printStackTrace();
          }
       }
-     
+      
+    /**
+     * Processes address from request and returns the structured address in an array
+     *
+     * @param request Instance of HttpServletRequest which has necessary parameters and
+     *                attributes required for delivering a web service.
+     *
+     * @return address String array with address details
+     */
      public String[] processAddress(HttpServletRequest request) {
     	 String address[] = new String[8];
     	 String employeeID = request.getParameter("employeeId");
@@ -164,7 +172,7 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
           String message = "";
           if (!(employeeService.checkIfIdExists(employeeID)) && (null != dateOfBirth && employeeService.validateEmail(email))) {
               success = employeeService.addEmployee(name, employeeID, salary, dateOfBirth, email, addresses);
-			  message += (success ? "New employee added successfully" : "Error in adding employee to the roster.");
+              message += (success ? "New employee added successfully" : "Error in adding employee to the roster.");
           } else {
               message += "Invalid input. Check if employee id, date of birth and email are valid.";
           }
@@ -518,36 +526,35 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
         *                
         */
         public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        	String action = request.getParameter("action");
-    		if (null == action) {
-    			//System.out.print("\nAction is null");
-    			String errorMessage = "Warning: Invalid action";
-    			request.setAttribute("errorMsg", errorMessage);
-    			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
-    			try {
-    				requestDispatcher.forward(request, response);
-    			} catch (ServletException | IOException e) {
-    				// TODO Auto-generated catch block
-    				e.printStackTrace();
-    			}
-    		} else {
-    			switch(action) {
-    			    case "displayAll" :
+            String action = request.getParameter("action");
+            if (null == action) {
+                String errorMessage = "Warning: Invalid action";
+                request.setAttribute("errorMsg", errorMessage);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
+                try {
+                    requestDispatcher.forward(request, response);
+                } catch (ServletException | IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            } else {
+                switch(action) {
+                    case "displayAll" :
                         fetchAllEmployees(request, response);
                         break;
-    			    case "singleEmployee":
-    			    	fetchSingleEmployee(request, response);
-    			    	break;
-    			    case "getDeletedEmployees":
+                    case "singleEmployee":
+                        fetchSingleEmployee(request, response);
+                        break;
+                    case "getDeletedEmployees":
                         getDeletedEmployees(request, response);
                         break;
-    			    case "getAssignableProjects":
+                    case "getAssignableProjects":
                         getAssignableProjects(request, response);
                         break;
-    		        default:
-    		        	break;
-    			}
-    		}
+                    default:
+                        break;
+                 }
+            }
         }
 	
        /**
