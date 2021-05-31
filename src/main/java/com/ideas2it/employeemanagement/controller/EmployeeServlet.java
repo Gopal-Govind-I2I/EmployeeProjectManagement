@@ -533,18 +533,18 @@ import com.ideas2it.employeemanagement.service.impl.EmployeeServiceImpl;
     		} else {
     			switch(action) {
     			    case "displayAll" :
-                        fetchAllEmployees(request, response);
-                        break;
+                                fetchAllEmployees(request, response);
+                                break;
     			    case "singleEmployee":
     			    	fetchSingleEmployee(request, response);
     			    	break;
     			    case "getDeletedEmployees":
-                        getDeletedEmployees(request, response);
-                        break;
+                                getDeletedEmployees(request, response);
+                                break;
     			    case "getAssignableProjects":
-                        getAssignableProjects(request, response);
-                        break;
-    		        default:
+                                getAssignableProjects(request, response);
+                                break;
+    		            default:
     		        	break;
     			}
     		}
