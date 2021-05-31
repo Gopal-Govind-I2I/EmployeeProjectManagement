@@ -368,8 +368,8 @@ public class ProjectServlet extends HttpServlet {
 		} else {
 			switch(action) {
 			    case "displayAll":
-		    	    fetchAllProjects(request, response);
-		    	    break;
+		    	        fetchAllProjects(request, response);
+		    	        break;
 			    case "singleProject":
 			        fetchSingleProject(request, response);
 			        break;
