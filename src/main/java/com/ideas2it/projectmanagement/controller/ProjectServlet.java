@@ -92,17 +92,17 @@ public class ProjectServlet extends HttpServlet {
 		String deadlineDate = request.getParameter("deadline");
 		deadline = projectServiceImpl.getDeadline(deadlineDate);
 		boolean success = false;
-        String message = "";
+                String message = "";
 		if (null != deadline) {
 			 success = projectServiceImpl.updateProjectDetails(projectID, name, manager, client, deadline);
 		} else {
 			 message += "Invalid date input for deadline. ";
 		}
 		message += (success ? "Project update successful." : "Project update unsuccessful.");
-        String attributeName = (success ? "successMessage" : "errorMessage");
-        String dispatchDestination = (success ? "/SuccessDisplay.jsp" : "/ErrorDisplay.jsp");
-        request.setAttribute(attributeName, message);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
+                String attributeName = (success ? "successMessage" : "errorMessage");
+                String dispatchDestination = (success ? "/SuccessDisplay.jsp" : "/ErrorDisplay.jsp");
+                request.setAttribute(attributeName, message);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
 		try {
 			requestDispatcher.forward(request, response);
 		} catch (ServletException | IOException e) {
@@ -147,13 +147,13 @@ public class ProjectServlet extends HttpServlet {
 		String client = request.getParameter("client");
 		String deadlineDate = request.getParameter("deadline");
 		Date deadline = projectServiceImpl.getDeadline(deadlineDate);
-        String message = (null != deadline ? "" : "Invalid input date for deadline. ") ;
-        boolean success = (null != deadline ? projectServiceImpl.addProject(name, manager, client, deadline) : false);
-        message += (success ? "Project creation successful." : "Project creation unsuccessful.");
-        String attributeName = (success ? "successMessage" : "errorMessage");
-        String dispatchDestination = (success ? "/SuccessDisplay.jsp" : "/ErrorDisplay.jsp");
-        request.setAttribute(attributeName, message);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
+                String message = (null != deadline ? "" : "Invalid input date for deadline. ") ;
+                boolean success = (null != deadline ? projectServiceImpl.addProject(name, manager, client, deadline) : false);
+                message += (success ? "Project creation successful." : "Project creation unsuccessful.");
+                String attributeName = (success ? "successMessage" : "errorMessage");
+                String dispatchDestination = (success ? "/SuccessDisplay.jsp" : "/ErrorDisplay.jsp");
+                request.setAttribute(attributeName, message);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
 		try {
 			requestDispatcher.forward(request, response);
 		} catch (ServletException | IOException e) {
@@ -175,10 +175,10 @@ public class ProjectServlet extends HttpServlet {
 		int projectID = Integer.parseInt((String)request.getParameter("proj_id"));
 		boolean success = projectServiceImpl.deleteProject(projectID);
 		String message = (success ? "Project deletion successful." : "Project deletion unsuccessful.");
-        String attributeName = (success ? "successMessage" : "errorMessage");
-        String dispatchDestination = (success ? "/SuccessDisplay.jsp" : "/ErrorDisplay.jsp");
-        request.setAttribute(attributeName, message);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
+                String attributeName = (success ? "successMessage" : "errorMessage");
+                String dispatchDestination = (success ? "/SuccessDisplay.jsp" : "/ErrorDisplay.jsp");
+                request.setAttribute(attributeName, message);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
 		try {
 			requestDispatcher.forward(request, response);
 		} catch (ServletException | IOException e) {
@@ -224,10 +224,10 @@ public class ProjectServlet extends HttpServlet {
 		int projectID = Integer.parseInt((String)request.getParameter("proj_id"));
 		boolean success = projectServiceImpl.restoreProject(projectID);
 		String message = (success ? "Project restoration successful." : "Project restoration unsuccessful.");
-        String attributeName = (success ? "successMessage" : "errorMessage");
-        String dispatchDestination = (success ? "/SuccessDisplay.jsp" : "/ErrorDisplay.jsp");
-        request.setAttribute(attributeName, message);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
+                String attributeName = (success ? "successMessage" : "errorMessage");
+                String dispatchDestination = (success ? "/SuccessDisplay.jsp" : "/ErrorDisplay.jsp");
+                request.setAttribute(attributeName, message);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
 		try {
 			requestDispatcher.forward(request, response);
 		} catch (ServletException | IOException e) {
@@ -250,10 +250,10 @@ public class ProjectServlet extends HttpServlet {
 		int projectID = Integer.parseInt((String)request.getParameter("proj_id"));
 		boolean success = projectServiceImpl.unassignEmployee(employeeID, projectID);
 		String message = (success ? "Employee unassign successful." : "Employee unassign unsuccessful.");
-        String attributeName = (success ? "successMessage" : "errorMessage");
-        String dispatchDestination = (success ? "/SuccessDisplay.jsp" : "/ErrorDisplay.jsp");
-        request.setAttribute(attributeName, message);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
+                String attributeName = (success ? "successMessage" : "errorMessage");
+                String dispatchDestination = (success ? "/SuccessDisplay.jsp" : "/ErrorDisplay.jsp");
+                request.setAttribute(attributeName, message);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
 		try {
 			requestDispatcher.forward(request, response);
 		} catch (ServletException | IOException e) {
@@ -319,7 +319,7 @@ public class ProjectServlet extends HttpServlet {
 		try {
 		    projectID = Integer.parseInt((String) request.getParameter("proj_id"));
 		} catch (NumberFormatException nfe) {
-			invalidInput = true;
+	            invalidInput = true;
 		}
 		List<String[]> projectDetails = projectServiceImpl.searchIndividualProject(projectID);
 		RequestDispatcher requestDispatcher = null;
@@ -376,9 +376,9 @@ public class ProjectServlet extends HttpServlet {
 			    case "getDeletedProjects":
 			    	getDeletedProjects(request, response);
 			    	break;
-                case "getAssignableEmployees":
-                    getAssignableEmployees(request, response);
-                    break;
+                            case "getAssignableEmployees":
+                                getAssignableEmployees(request, response);
+                                break;
 			    default:
 			    	break;
 		    }	
